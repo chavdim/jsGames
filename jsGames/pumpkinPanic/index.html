@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>game</title>
+	<meta charset="UTF-8">
+	<meta name="HandheldFriendly" content="true" />
+    <meta id="viewp" name="viewport" content="width=device-height, initial-scale=1.0">
+	<!-- SCRIPTS & STYLESHEET-->
+	<!--<link rel="stylesheet" type="text/css" href="fonts.css">-->
+	<link rel="canonical"
+  href="https://dev.twitter.com/web/tweet-button">
+
+	<script src='./js/util.js' type="text/javascript"></script>
+	<script type='text/javascript' src='./js/jquery.min.js'  charset="utf-8"></script>
+	<script src='./js/visualObjects.js' type="text/javascript"></script>
+	<script src='./js/master.js' type="text/javascript"></script>
+	<script src='./js/audio.js' type="text/javascript"></script>
+	<script src='./js/images.js' type="text/javascript"></script>
+	
+	<script src='./js/inputHandler.js' type="text/javascript"></script>
+	<script src='./js/objects.js' type="text/javascript"></script>
+	<script src='./js/creators.js' type="text/javascript"></script>
+	<script src='./js/game.js' type="text/javascript"></script>
+	
+
+	<script src="./matter-js/build/matter.js"></script>
+	<script src="./soundjs-0.6.1.min.js"></script>
+	<!--<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>-->
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+	<!-- END SCRIPTS & STYLESHEET -->
+</head>
+<body id = 'gamebody' style = "background-color:#E66C2C; " >
+<style> 
+@font-face {
+    font-family: hallo;
+    src: url(./halloween.ttf);
+}
+
+div {
+    font-family: hallo;
+}
+/*div {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    align:center;
+    width: 400px;
+
+}*/
+#all {
+     width: 400px;
+     height:100px;
+     margin: 0px auto;
+
+   }
+#twitterButton {
+	position: relative;
+	top: 1158px;
+     width: 400px;
+     height:20px;
+     margin: 0px auto;
+
+   }
+
+
+body{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a53f00+0,7db9e8+100&amp;1+0,0+100 */
+background: -moz-linear-gradient(top,  rgba(165,63,0,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(165,63,0,1)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(165,63,0,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(165,63,0,1) 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(165,63,0,1) 0%,rgba(125,185,232,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(165,63,0,1) 0%,rgba(125,185,232,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a53f00', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+
+}
+</style>
+<div class="customFont" style="display:none;font-family:hallo">1020</div>
+<script>
+  createjs.Sound.alternateExtensions = ["mp3"];
+    createjs.Sound.registerSound("./sounds/rantan.wav", "Halloween");
+    createjs.Sound.registerSound("./sounds/kabocha.wav", "kabocha");
+    createjs.Sound.registerSound("./sounds/scream.wav", "scream");
+	//REMOVE RIGHT CLICK MENU POPUP
+	document.oncontextmenu =function  () {
+	   return false;
+	};
+	//END
+            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+            viewport = document.getElementById("viewp");
+            //console.log((width/400))
+            viewport.setAttribute('content', 'width=device-width, initial-scale='+(width/420)+', user-scalable=0');
+            
+            //window.localStorage.setItem("key", "value2");
+            //var value = window.localStorage.getItem("key");
+
+    var canv = document.getElementById("gamebody");
+    canv.addEventListener('click', function () {
+        createjs.Sound.play("Halloween");
+        canv.removeEventListener('touchstart', arguments.callee, false);
+        canv.removeEventListener('click', arguments.callee, false);
+    }, false);
+    canv.addEventListener('touchstart', function () {
+        createjs.Sound.play("Halloween");
+        canv.removeEventListener('click', arguments.callee, false);
+        canv.removeEventListener('touchstart', arguments.callee, false);
+    }, false);
+    </script>
+
+
+	
+
+  
+<div id="all">
+	  <canvas style='position:absolute;border: 1px solid black; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; user-select: none; ' id = 'gamecanvas' width="400" height="711" ></canvas>
+	  <canvas style='position:absolute;border: 1px solid black; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; user-select: none; ' id = 'gamecanvas2' width="400" height="711" ></canvas>
+	<a href="https://www.facebook.com/PumpkinPanic-672587989478988/timeline/">
+	<img src="./design/panic.jpg" style="position:relative;top:711px;">
+	</a>
+
+	
+	
+
+</div>
+<div id="twitterButton">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://dl.dropboxusercontent.com/u/226028257/pumpinPanic/index.html" data-text="このゲームかてん！">Tweet</a>
+
+	<div
+	  class="fb-like"
+	  data-share="true"
+	  data-width="450"
+	  data-show-faces="true">
+	</div>
+</div>
+<!--
+<script>
+var start = document;
+
+// ここから下はファイル名だけ変更
+createjs.Sound.alternateExtensions = ["mp3"];
+createjs.Sound.addEventListener("fileload", handleLoadComplete);
+   	createjs.Sound.registerSound("./sounds/rantan.wav", "Halloween");
+   	//createjs.Sound.registerSound("./sounds/crash.mp3", "Crash");
+   	createjs.Sound.registerSound("./sounds/scream.wav", "Scream");
+   	function handleLoadComplete(event) {
+   	//start.update();
+}
+
+start.addEventListener('click', function() {
+var instance = createjs.Sound.play("Halloween");
+   instance.volume = 0.5;
+//init();
+});
+</script>  -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+   
+
+
+	
+	
+	
+	<!-- MENU -->
+	
+	<!-- END MENU -->
+
+	<!-- GAME -->
+
+	<!--<div id ='game_bg'></div> -->
+	<!-- END GAME -->
+
+
+	<script>
+  /*
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '866459206795160',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+*/
+</script> 
+
+<!--<audio controls autoplay >
+  <source src= "./sounds/kabocha.wav" type="audio/wav">
+  <source src= "./sounds/scream.wav" type="audio/wav">
+
+</audio>-->
+</body>
+</html>

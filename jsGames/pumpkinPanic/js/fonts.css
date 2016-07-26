@@ -1,0 +1,8 @@
+@font-face {
+    font-family: hallo;
+    src: url(./halloween.ttf);
+}
+
+div {
+    font-family: hallo;
+}
